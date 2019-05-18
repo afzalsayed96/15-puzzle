@@ -10,17 +10,18 @@ const grid = _.range(0, 16).map(n => {
   return [80 * col, 80 * row];
 });
 
-const Button = ({ handleClick, action }) => {
+const Button = ({ handleClick, action, disabled }) => {
   return (
-    <button className={action} onClick={handleClick}>{action}</button>
+    <button className={action} onClick={handleClick} disabled={disabled}>{action}</button>
   )
 }
 
 
 class Game extends React.Component {
 
-  updatePosition = (index) => {
-    this.props.onGameAction("MOVE", index);
+  moveTile = (tile) => {
+    if (!this.props.disabled)
+      this.props.onGameAction("MOVE", tile);
   }
   shufflePuzzle = () => {
     this.props.onGameAction("SHUFFLE")
@@ -35,7 +36,7 @@ class Game extends React.Component {
   }
 
   render() {
-    const { currPositions } = this.props;
+    const { currPositions, disabled } = this.props;
     return (
       <div>
         <div id="main" className="container">
@@ -45,16 +46,17 @@ class Game extends React.Component {
               let [x, y] = grid[currPositions.indexOf(key)];
               return <div key={key}
                 className={cellClass}
-                onClick={() => this.updatePosition(key)}
+                onClick={() => this.moveTile(key)}
                 style={{ transform: `translate(${x}px,${y}px)` }}>{key}</div>
             })}
           </div>
         </div >
         <div id="main" className="container">
           <div className="controls">
-            <Button action={"shuffle"} handleClick={this.shufflePuzzle} />
-            <Button action={"solve"} handleClick={this.solvePuzzle} />
-            <Button action={"reset"} handleClick={this.resetPuzzle} />
+            <Button action={"shuffle"} handleClick={this.shufflePuzzle} disabled={disabled} />
+            <Button action={"solve"} handleClick={this.solvePuzzle} disabled={disabled} />
+            <Button action={"reset"} handleClick={this.resetPuzzle} disabled={disabled} />
+            <button disabled={disabled}>TEST</button>
           </div>
         </div>
       </div>)
@@ -63,7 +65,8 @@ class Game extends React.Component {
 
 const mapStateToProps = state => ({
   currPositions: state.game.currPositions,
-  allMoves: state.game.allMoves
+  allMoves: state.game.allMoves,
+  disabled: state.game.disabled
 });
 
 const actions = { onGameAction };

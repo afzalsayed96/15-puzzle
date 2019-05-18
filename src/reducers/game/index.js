@@ -4,25 +4,39 @@ export const initialState = {
   currPositions: JSON.parse(localStorage.getItem("currentGamePosition")) || solvedPositions,
   allPositions: JSON.parse(localStorage.getItem("allGamePositions")) || [solvedPositions],
   win: false,
-  forbidMove: "NULL",
+  forbidMove: -1,
   nextMove: null,
-  allMoves: JSON.parse(localStorage.getItem("allMoves")) || [0]
+  allMoves: JSON.parse(localStorage.getItem("allMoves")) || [0],
+  disabled: false
 };
 
 export default function (state = initialState, action) {
-
+  let possibleMoves = {
+    0: [1, 4],
+    1: [0, 2, 5],
+    2: [1, 3, 6],
+    3: [2, 7],
+    4: [0, 5, 8],
+    5: [1, 4, 6, 9],
+    6: [2, 5, 7, 10],
+    7: [3, 6, 11],
+    8: [4, 9, 12],
+    9: [5, 8, 10, 13],
+    10: [6, 9, 11, 14],
+    11: [7, 10, 15],
+    12: [8, 13],
+    13: [9, 12, 14],
+    14: [10, 13, 15],
+    15: [11, 14]
+  }
   switch (action.type) {
     case "SOLVE_ONE_STEP": {
       let currPositions = state.currPositions.slice()
-      console.log("In solve")
-      let index = action.payload.index
-      console.log(index)
+      let tile = action.payload.tile
       let emptyIndex = currPositions.indexOf(0);
-      let targetIndex = currPositions.indexOf(index);
-      const dif = Math.abs(targetIndex - emptyIndex);
-      if (dif == 1 || dif == 4) {
-        console.log("In solve")
-        currPositions[emptyIndex] = index;
+      let targetIndex = currPositions.indexOf(tile);
+      if (possibleMoves[emptyIndex].indexOf(targetIndex) > -1) {
+        currPositions[emptyIndex] = tile;
         currPositions[targetIndex] = 0;
 
         let win = () => {
@@ -32,108 +46,93 @@ export default function (state = initialState, action) {
       }
       return state;
     }
-      break;
     case "MOVE_ONE_STEP": {
-      let index = action.payload.index || state.nextMove
+      let tile = action.payload.tile || state.nextMove
       let allMoves = state.allMoves.slice()
       let currPositions = state.currPositions.slice()
       let allPositions = state.allPositions.slice()
       let emptyIndex = currPositions.indexOf(0);
-      let targetIndex = currPositions.indexOf(index);
-      const dif = Math.abs(targetIndex - emptyIndex);
-      if (dif == 1 || dif == 4) {
-        currPositions[emptyIndex] = index;
+      let targetIndex = currPositions.indexOf(tile);
+      if (possibleMoves[emptyIndex].indexOf(targetIndex) > -1) {
+        currPositions[emptyIndex] = tile;
         currPositions[targetIndex] = 0;
 
         let win = () => {
           return solvedPositions === currPositions
         };
-        let currPositionsIndex = JSON.stringify(allPositions).indexOf(JSON.stringify(currPositions));
-        if (currPositionsIndex === -1) {
+
+        let currPositionsIndex = (JSON.stringify(allPositions).indexOf(JSON.stringify(currPositions)) - 1) / 40;
+        if (currPositionsIndex < 0) {
           allPositions.push(currPositions)
-          localStorage.setItem("allGamePositions", JSON.stringify(allPositions))
-          allMoves.push(index)
-          localStorage.setItem("allMoves", JSON.stringify(allMoves))
+          allMoves.push(tile)
         }
         else {
+          console.log(JSON.stringify(allPositions), JSON.stringify(currPositions), currPositionsIndex)
           allPositions = allPositions.slice(0, currPositionsIndex + 1)
-          localStorage.setItem("allGamePositions", JSON.stringify(allPositions))
+          console.log(allPositions)
           allMoves = allMoves.slice(0, currPositionsIndex + 1)
-          localStorage.setItem("allMoves", JSON.stringify(allMoves))
         }
+        localStorage.setItem("allMoves", JSON.stringify(allMoves))
+        localStorage.setItem("allGamePositions", JSON.stringify(allPositions))
         localStorage.setItem("currentGamePosition", JSON.stringify(currPositions))
         return { ...state, currPositions: currPositions, win: win, allMoves: allMoves, nextMove: null, allPositions: allPositions }
       }
       return state;
     }
-      break;
-    case "SELECT": {
-      let emptyIndex = state.currPositions.indexOf(0);
-      let possibleMoves = []
-      if ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].indexOf(emptyIndex) > -1) {
-        possibleMoves.push("DOWN")
+    case "SELECT_RANDOM": {
+      let currPositions = state.currPositions.slice()
+      let emptyIndex = currPositions.indexOf(0);
+      let possibleMovesArr = possibleMoves[emptyIndex]
+      var forbidMoveIndex = currPositions.indexOf(state.forbidMove)
+      var forbidMoveIndexLoc = possibleMovesArr.indexOf(forbidMoveIndex)
+      if (forbidMoveIndexLoc > -1) {
+        possibleMovesArr.splice(forbidMoveIndexLoc, 1)
       }
-      if ([0, 1, 2, 4, 8, 5, 6, 9, 10, 12, 13, 14].indexOf(emptyIndex) > -1) {
-        possibleMoves.push("RIGHT")
-      }
-      if ([1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15].indexOf(emptyIndex) > -1) {
-        possibleMoves.push("LEFT")
-      }
-      if ([4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].indexOf(emptyIndex) > -1) {
-        possibleMoves.push("UP")
-      }
-      var forbidMoveIndex = possibleMoves.indexOf(state.forbidMove)
-      if (forbidMoveIndex > -1) {
-        possibleMoves.splice(forbidMoveIndex, 1)
-      }
-      var nextMove = Math.floor((Math.random() * possibleMoves.length));
-      if (possibleMoves[nextMove] === "DOWN") {
-        return { ...state, forbidMove: "UP", nextMove: state.currPositions[emptyIndex + 4] }
-      }
-      if (possibleMoves[nextMove] === "UP") {
-        return { ...state, forbidMove: "DOWN", nextMove: state.currPositions[emptyIndex - 4] }
-      }
-      if (possibleMoves[nextMove] === "LEFT") {
-        return { ...state, forbidMove: "RIGHT", nextMove: state.currPositions[emptyIndex - 1] }
-      }
-      if (possibleMoves[nextMove] === "RIGHT") {
-        return { ...state, forbidMove: "LEFT", nextMove: state.currPositions[emptyIndex + 1] }
-      }
+
+      var nextMoveIndex = Math.floor((Math.random() * possibleMovesArr.length));
+      var nextMove = state.currPositions[possibleMovesArr[nextMoveIndex]]
+      return { ...state, forbidMove: nextMove, nextMove: nextMove }
+
     }
-      break;
     case "RESET": {
-      let currPositions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0]
+      let currPositions = solvedPositions
       let allMoves = [0]
       let allPositions = [solvedPositions]
       localStorage.removeItem("currentGamePosition")
       localStorage.removeItem("allMoves")
       localStorage.removeItem("allGamePositions")
       return {
+        ...state,
         currPositions: currPositions,
         win: false,
-        forbidMove: "NULL",
+        forbidMove: -1,
         nextMove: null,
         allMoves: allMoves,
-        allPositions: allPositions
+        allPositions: allPositions,
       }
     }
-      break;
-      case "WIN": {
-        let currPositions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0]
+    case "WIN": {
+      let currPositions = solvedPositions
       let allMoves = [0]
       let allPositions = [solvedPositions]
       localStorage.removeItem("currentGamePosition")
       localStorage.removeItem("allMoves")
       localStorage.removeItem("allGamePositions")
       return {
+        ...state,
         currPositions: currPositions,
         win: true,
-        forbidMove: "NULL",
+        forbidMove: -1,
         nextMove: null,
         allMoves: allMoves,
         allPositions: allPositions
       }
+    }
+    case "DISABLE": {
+      return {
+        ...state, disabled: action.payload.disable
       }
+    }
     default:
       return state;
   }
