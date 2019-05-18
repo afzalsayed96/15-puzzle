@@ -28,6 +28,8 @@ const onGameAction = (action, tile, allMoves) => dispatch => {
     case "RESET":
       dispatch({ type: "RESET", payload: {} })
       break;
+    default:
+      break;
   }
 };
 

@@ -1,4 +1,3 @@
-var _ = require('lodash');
 let solvedPositions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0];
 export const initialState = {
   currPositions: JSON.parse(localStorage.getItem("currentGamePosition")) || solvedPositions,
@@ -7,7 +6,8 @@ export const initialState = {
   forbidMove: -1,
   nextMove: null,
   allMoves: JSON.parse(localStorage.getItem("allMoves")) || [0],
-  disabled: false
+  disabled: false,
+  movesCount: JSON.parse(localStorage.getItem("movesCount")) || 0
 };
 
 export default function (state = initialState, action) {
@@ -67,15 +67,13 @@ export default function (state = initialState, action) {
           allMoves.push(tile)
         }
         else {
-          console.log(JSON.stringify(allPositions), JSON.stringify(currPositions), currPositionsIndex)
           allPositions = allPositions.slice(0, currPositionsIndex + 1)
-          console.log(allPositions)
           allMoves = allMoves.slice(0, currPositionsIndex + 1)
         }
         localStorage.setItem("allMoves", JSON.stringify(allMoves))
         localStorage.setItem("allGamePositions", JSON.stringify(allPositions))
         localStorage.setItem("currentGamePosition", JSON.stringify(currPositions))
-        return { ...state, currPositions: currPositions, win: win, allMoves: allMoves, nextMove: null, allPositions: allPositions }
+        return { ...state, currPositions: currPositions, win: win, allMoves: allMoves, nextMove: null, allPositions: allPositions, movesCount: state.movesCount + 1 }
       }
       return state;
     }
@@ -109,6 +107,7 @@ export default function (state = initialState, action) {
         nextMove: null,
         allMoves: allMoves,
         allPositions: allPositions,
+        movesCount: 0
       }
     }
     case "WIN": {

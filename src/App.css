@@ -26,8 +26,7 @@ body,
   border-radius: 4px;
   margin-top: 8px;
   background: #fff;
-  box-shadow: rgba(0,0,0,0.2) 0 1px 2px 0;
-  color: #333;
+  border: 2px solid;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
@@ -124,4 +123,20 @@ button.reset {
   margin: auto auto;
   text-align: center;
   line-height: 70px;
+}
+
+.container .info {
+  width: 360px;
+  height: 300px;
+  margin-right: 8px;
+  border-radius: 4px;
+  margin-top: 8px;
+  background: #fff;
+  box-shadow: rgba(0,0,0,0.2) 0 1px 2px 0;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  position: absolute;
 }
