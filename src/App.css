@@ -1,33 +1,129 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  padding: 0;
+  background: #eee;
+  font-family: Helvetica, sans-serif;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+html,
+body,
+.container {
+  height: 100%;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.container .game {
+  margin: auto auto;
+  text-align: center;
+  line-height: 70px;
+  width: 348px;
+  height: 348px;
+}
+.container .game .cell {
+  width: 70px;
+  height: 70px;
+  margin-right: 8px;
+  border-radius: 4px;
+  margin-top: 8px;
+  background: #fff;
+  box-shadow: rgba(0,0,0,0.2) 0 1px 2px 0;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  position: absolute;
+}
+.container .empty {
+  opacity: 0;
 }
 
-.App-link {
-  color: #61dafb;
+button.shuffle:hover {
+  box-shadow: 0 4px #ab3c3c;
+  top: 2px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button.shuffle {
+  border-radius: 5px 5px;
+  background: #cb4e4e;
+  color: #fff;
+  box-shadow: 0 6px #ab3c3c;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  padding: 25px 80px;
+  display: inline-block;
+  margin: 15px 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+}
+
+button.solve:hover {
+  box-shadow: 0 4px #035a91;
+  top: 2px;
+}
+
+button.solve {
+  border-radius: 5px 5px;
+  background: #0c82cd;
+  color: #fff;
+  box-shadow: 0 6px #035a91;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  padding: 25px 80px;
+  display: inline-block;
+  margin: 15px 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+}
+
+
+button.reset:hover {
+  box-shadow: 0 4px #333333;
+  top: 2px;
+}
+
+button.reset {
+  border-radius: 5px 5px;
+  background: #484848;
+  color: #fff;
+  box-shadow: 0 6px #333333;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  padding: 25px 80px;
+  display: inline-block;
+  margin: 15px 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+}
+
+.container .controls {
+  margin: auto auto;
+  text-align: center;
+  line-height: 70px;
+  width: 348px;
+  height: 348px;
 }
