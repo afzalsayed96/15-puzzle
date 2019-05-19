@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "afzalsayed96.github.io/15-puzzle/static/css/main.a35069e4.chunk.css",
-    "main.js": "afzalsayed96.github.io/15-puzzle/static/js/main.b9543d00.chunk.js",
-    "main.js.map": "afzalsayed96.github.io/15-puzzle/static/js/main.b9543d00.chunk.js.map",
-    "runtime~main.js": "afzalsayed96.github.io/15-puzzle/static/js/runtime~main.527ce896.js",
-    "runtime~main.js.map": "afzalsayed96.github.io/15-puzzle/static/js/runtime~main.527ce896.js.map",
-    "static/js/2.5c45d675.chunk.js": "afzalsayed96.github.io/15-puzzle/static/js/2.5c45d675.chunk.js",
-    "static/js/2.5c45d675.chunk.js.map": "afzalsayed96.github.io/15-puzzle/static/js/2.5c45d675.chunk.js.map",
-    "index.html": "afzalsayed96.github.io/15-puzzle/index.html",
-    "precache-manifest.f6b19a069e231b7923208b714e1ef175.js": "afzalsayed96.github.io/15-puzzle/precache-manifest.f6b19a069e231b7923208b714e1ef175.js",
-    "service-worker.js": "afzalsayed96.github.io/15-puzzle/service-worker.js",
-    "static/css/main.a35069e4.chunk.css.map": "afzalsayed96.github.io/15-puzzle/static/css/main.a35069e4.chunk.css.map"
+    "main.css": "/15-puzzle/static/css/main.a35069e4.chunk.css",
+    "main.js": "/15-puzzle/static/js/main.76a05309.chunk.js",
+    "main.js.map": "/15-puzzle/static/js/main.76a05309.chunk.js.map",
+    "runtime~main.js": "/15-puzzle/static/js/runtime~main.8815c511.js",
+    "runtime~main.js.map": "/15-puzzle/static/js/runtime~main.8815c511.js.map",
+    "static/js/2.5c45d675.chunk.js": "/15-puzzle/static/js/2.5c45d675.chunk.js",
+    "static/js/2.5c45d675.chunk.js.map": "/15-puzzle/static/js/2.5c45d675.chunk.js.map",
+    "index.html": "/15-puzzle/index.html",
+    "precache-manifest.02d9e1c615cf9e6735a6288706f246bd.js": "/15-puzzle/precache-manifest.02d9e1c615cf9e6735a6288706f246bd.js",
+    "service-worker.js": "/15-puzzle/service-worker.js",
+    "static/css/main.a35069e4.chunk.css.map": "/15-puzzle/static/css/main.a35069e4.chunk.css.map"
   }
 }
