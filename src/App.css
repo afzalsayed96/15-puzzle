@@ -26,11 +26,12 @@ body,
   border-radius: 4px;
   margin-top: 8px;
   background: #fff;
-  border: 2px solid;
+  box-shadow: rgba(0,0,0,0.2) 0 1px 2px 0;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease-in;
+  color: #333;
   position: absolute;
 }
 .container .empty {
@@ -43,25 +44,9 @@ button.shuffle:hover {
 }
 
 button.shuffle {
-  border-radius: 5px 5px;
   background: #cb4e4e;
   color: #fff;
   box-shadow: 0 6px #ab3c3c;
-  -webkit-transition: none;
-  -moz-transition: none;
-  transition: none;
-  border: none;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: pointer;
-  padding: 25px 80px;
-  display: inline-block;
-  margin: 15px 30px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 700;
-  outline: none;
-  position: relative;
 }
 
 button.solve:hover {
@@ -70,25 +55,9 @@ button.solve:hover {
 }
 
 button.solve {
-  border-radius: 5px 5px;
   background: #0c82cd;
   color: #fff;
   box-shadow: 0 6px #035a91;
-  -webkit-transition: none;
-  -moz-transition: none;
-  transition: none;
-  border: none;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: pointer;
-  padding: 25px 80px;
-  display: inline-block;
-  margin: 15px 30px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 700;
-  outline: none;
-  position: relative;
 }
 
 
@@ -97,11 +66,14 @@ button.reset:hover {
   top: 2px;
 }
 
-button.reset {
-  border-radius: 5px 5px;
+button.restart {
   background: #484848;
   color: #fff;
   box-shadow: 0 6px #333333;
+}
+
+button {
+  border-radius: 5px 5px;
   -webkit-transition: none;
   -moz-transition: none;
   transition: none;
@@ -117,9 +89,10 @@ button.reset {
   font-weight: 700;
   outline: none;
   position: relative;
+  color: #333;
 }
 
-.container .controls {
+.container .controls, .container .levels {
   margin: auto auto;
   text-align: center;
   line-height: 70px;
@@ -129,14 +102,19 @@ button.reset {
   width: 360px;
   height: 300px;
   margin-right: 8px;
+  margin-left: 8px; 
   border-radius: 4px;
   margin-top: 8px;
   background: #fff;
   box-shadow: rgba(0,0,0,0.2) 0 1px 2px 0;
   color: #333;
   font-size: 1.2rem;
-  font-weight: bold;
-  cursor: pointer;
+  padding: 24px;
   transition: all 0.2s ease-in;
-  position: absolute;
+  overflow: auto;
+}
+
+.container .levels button {
+  padding: 8px 16px;
+  line-height: 36px;
 }

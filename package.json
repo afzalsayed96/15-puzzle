@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "easytimer.js": "^3.1.0",
     "react": "^16.8.6",
+    "react-compound-timer": "^1.0.13",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "react-scripts": "3.0.1",
