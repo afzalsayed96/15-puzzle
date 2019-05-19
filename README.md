@@ -51,4 +51,4 @@ The game intelligently (AI?) backtracks it's moves to prevent repetitive to and 
 
 ## Hire me to build beautiful UIs for complex problems
 
-[@afzalsayed96](twitter.com/afzalsayed96)
+[@afzalsayed96](https://twitter.com/afzalsayed96)
