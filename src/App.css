@@ -4,27 +4,36 @@ body {
   background: #eee;
   font-family: Helvetica, sans-serif;
 }
-html,
-body,
-.container {
-  height: 100%;
-}
+
 .container {
   display: flex;
 }
-.container .game {
+
+
+.container .game-container {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 480px;
+  height: 480px;
+}
+
+.container .game-container .game {
   margin: auto auto;
   text-align: center;
   line-height: 70px;
-  width: 348px;
-  height: 348px;
+  width: 320px;
+  height: 320px;
 }
-.container .game .cell {
+.container .game-container .game .cell {
   width: 70px;
   height: 70px;
-  margin-right: 8px;
+  margin: 4px;
   border-radius: 4px;
-  margin-top: 8px;
   background: #fff;
   box-shadow: rgba(0,0,0,0.2) 0 1px 2px 0;
   font-size: 1.2rem;
@@ -99,8 +108,8 @@ button {
 }
 
 .container .info {
-  width: 360px;
-  height: 300px;
+  width: 320px;
+  height: 480px;
   margin-right: 8px;
   margin-left: 8px; 
   border-radius: 4px;
@@ -117,4 +126,14 @@ button {
 .container .levels button {
   padding: 8px 16px;
   line-height: 36px;
+  border: 2px solid;
+}
+
+.heading {
+  font-size: 36px;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 500;
 }
