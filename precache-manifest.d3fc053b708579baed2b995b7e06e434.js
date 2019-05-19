@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8a43c772ee6cb8d803c12ece3099853b",
+    "revision": "dffaa9f0cd27b86acf98b30e127022bd",
     "url": "/15-puzzle/index.html"
   },
   {
-    "revision": "15c39f7addb7df92000b",
+    "revision": "4642d33a36814c2e3ebf",
     "url": "/15-puzzle/static/css/main.a35069e4.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/15-puzzle/static/js/2.5c45d675.chunk.js"
   },
   {
-    "revision": "15c39f7addb7df92000b",
-    "url": "/15-puzzle/static/js/main.76a05309.chunk.js"
+    "revision": "4642d33a36814c2e3ebf",
+    "url": "/15-puzzle/static/js/main.506be0d5.chunk.js"
   },
   {
     "revision": "bae4684018ccced23f88",
