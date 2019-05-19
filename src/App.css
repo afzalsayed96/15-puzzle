@@ -137,3 +137,9 @@ button {
 h1 {
   font-weight: 500;
 }
+
+@media only screen and (max-width: 768px) {
+  .container .info {
+    display: none;
+  }
+}
