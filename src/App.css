@@ -45,6 +45,7 @@ body {
 }
 .container .empty {
   opacity: 0;
+  visibility: hidden;
 }
 
 button.shuffle:hover {
