@@ -1,6 +1,10 @@
 # 15 Puzzle Game
 
-![screenshot](docs/screenshot.png)
+<p align="center">
+  <a href="https://afzalsayed96.github.io/15-puzzle/">
+<img src="docs/screenshot.png"/>
+</a>
+</p>
 
 ## Instructions
 
