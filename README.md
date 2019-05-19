@@ -1,68 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 15 Puzzle Game
 
-## Available Scripts
+![screenshot](docs/screenshot.png)
 
-In the project directory, you can run:
+## Instructions
 
-### `npm start`
+Click on number tiles to move them to adjacent empty space in grid and arrange them in order 1 to 15.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-   Press RESTART to start game
+-   Press SHUFFLE to shuffle game
+-   Press SOLVE to auto solve game
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## How it works?
 
-### `npm test`
+The n-puzzle is a classical problem for modelling algorithms involving heuristics. Half of the starting positions for the n-puzzle are impossible to resolve, no matter how many moves are made. ([source](https://en.wikipedia.org/wiki/15_puzzle))
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To make sure every new game and every shuffle is solvable, the game tries to shuffle the board starting from the solved state itself.
 
-### `npm run build`
+## Solution
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The problem of finding the shortest solution is NP-hard. [Jamie Wong](http://jamie-wong.com/2011/10/16/fifteen-puzzle-algorithm/) tries to solve this problem in browser using Tree Pruning, Las Vegas Randomization, Min-Heap Priority Queue, (Quantum Computers?) after taking [Introduction to Artificial Intelligence](https://www.ai-class.com/) course and the result is painfully slow if you shuffle the board too hard. [Try it yourself](http://jamie-wong.com/2011/10/16/fifteen-puzzle-algorithm/).
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Search of a simpler solution
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Since, I wanted to implement this in a single weekend I chose a simple approach. The game stores every move in an array and just backtracks it to reach the solution. ¯\_(ツ)\_/⁻
 
-### `npm run eject`
+### Result
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![demo](docs/demo.gif)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![meme](docs/meme.jpg)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Optimizations
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The game intelligently (AI?) backtracks it's moves to prevent repetitive to and fro of the same moves. It store all the moves in an array and truncates if a previously seen state is encountered again.
 
-## Learn More
+#### What won't happen
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![wont](docs/wont.gif)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### What will happen
 
-### Code Splitting
+![will](docs/will.gif)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Libraries Used
 
-### Analyzing the Bundle Size
+-   `react@16.8.6`
+-   `react-redux@7.0.3`
+-   Developed using `create-react-app`
+-   Deployed using `gh-pages`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Hire me to build beautiful UIs for complex problems
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[@afzalsayed96](twitter.com/afzalsayed96)

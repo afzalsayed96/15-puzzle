@@ -1,6 +1,6 @@
 const onGameAction = (action, params) => dispatch => {
   let shuffleWithLevel = (level) => {
-    for (var i = 0; i < (level + 1) * 20; i++) {
+    for (var i = 0; i < (level + 1) * 15; i++) {
       dispatch({ type: "SELECT_RANDOM", payload: {} })
       dispatch({ type: "SHUFFLE_ONE_STEP", payload: {} })
     }
