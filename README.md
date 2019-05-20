@@ -1,9 +1,9 @@
 # 15 Puzzle Game
-
+<a href="https://afzalsayed96.github.io/15-puzzle/">Demo</a>
 <p align="center">
   <a href="https://afzalsayed96.github.io/15-puzzle/">
-<img src="docs/screenshot.png"/>
-</a>
+    <img src="docs/screenshot.png"/>
+  </a>
 </p>
 
 ## Instructions
@@ -52,6 +52,10 @@ The game intelligently (AI?) backtracks it's moves to prevent repetitive to and 
 -   `react-redux@7.0.3`
 -   Developed using `create-react-app`
 -   Deployed using `gh-pages`
+
+## Bugs
+
+There might be some bugs and edge cases so go easy on this baby.
 
 ## Hire me to build beautiful UIs for complex problems
 

@@ -2,7 +2,7 @@ let solvedPositions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0];
 export const initialState = {
   currPositions: JSON.parse(localStorage.getItem("currentGamePosition")) || solvedPositions,
   allPositions: JSON.parse(localStorage.getItem("allGamePositions")) || [solvedPositions],
-  win: false,
+  win: true,
   forbidMove: -1,
   nextMove: null,
   allMoves: JSON.parse(localStorage.getItem("allMoves")) || [0],
