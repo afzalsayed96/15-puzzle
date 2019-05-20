@@ -1,5 +1,5 @@
 # 15 Puzzle Game
-<a href="https://afzalsayed96.github.io/15-puzzle/">Demo</a>
+
 <p align="center">
   <a href="https://afzalsayed96.github.io/15-puzzle/">
     <img src="docs/screenshot.png"/>
