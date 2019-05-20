@@ -55,7 +55,7 @@ The game intelligently (AI?) backtracks it's moves to prevent repetitive to and 
 
 ## Bugs
 
-There might be some bugs and edge cases so go easy on this baby.
+There might be some bugs and unhandled edge cases so go easy on this baby.
 
 ## Hire me to build beautiful UIs for complex problems
 
